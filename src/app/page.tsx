@@ -1,113 +1,59 @@
-import Image from 'next/image'
+"use client"
+
+import { useState } from "react"
+import BadassForm from "./components/badassform"
+import Card from "./components/card"
 
 export default function Home() {
+  const [name, setName] = useState<string>("");
+  const [subject, setSubject] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+
+  const submitMessage = async (name: string, subject: string, description: string) => {
+    const response = await fetch('/api/contact', {
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, subject, description})
+    });
+  
+    return await response.json();
+  }
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <main className="flex min-h-screen flex-col items-center lg:justify-center p-4 lg:p-24 gap-4">
+      <Card title="Hello and Welcome!">
+        <p className='text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b'>My name is Juan De Jesus, nice to meet you!</p>
+        <p className='text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b'>As a Puerto Rican software engineer with nearly a decade of experience (8 years), my journey began with a healthcare startup where I played a pivotal role as a founding engineer. In the early stages, I proposed a strategic approach: 'What if we prioritize making informed decisions, launch with two essential features, and concentrate on gaining traction?' Unfortunately, the response was insistent on shipping every feature at launch. Fast forward three years, the outcome was disheartening—no product, no users, and ultimately, bankruptcy.</p>
+        <p className='text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b'>As a response to this experience, I am extending my services in technical leadership to early-stage startups. My motivation is rooted in a passion for building, and I aspire to collaborate with founders across various industries. I believe in preventing promising concepts from going to waste, only to be picked up by big tech. Let's work together to bring innovative ideas to fruition and ensure their success.</p>
+      </Card>
+      <Card title="Mission/Vision">
+        <p className="text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b">
+          I'm here to help early-stage startups kick off strong by providing solid technical leadership. My thing? Building cool stuff. I'm all about teaming up with founders to turn their great ideas into standout products.
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+        <p className="text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b">
+          Imagine a world where awesome ideas don't fizzle out but take off in the hands of the people who came up with them. I'm in to team up with founders, making sure their innovative ideas stay true to their roots and don't get scooped up by big tech. Let's make your startup journey a success! 🚀
+        </p>
+      </Card>
+      <Card title="What I have to offer?">
+        <p className="text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b">
+          I have experience in designing, developing, and deploying software systems efficiently. I'm well-versed in platforms like Vercel and Netlify for quick launches and can also customize solutions using AWS with Docker containers. My skills cover the entire software development lifecycle—from detailed planning to timely solution deployment. I thrive as a team player in software development.
+        </p>
+      </Card>
+      <Card title="My Skills">
+        <p className="text-md py-2  text-slate-500 border-b-2 border-l-4 border-slate-700 my-4 pl-2 rounded-b">
+          I bring a particular skill set to the table, yet I'm open to embracing less conventional abilities. My proficiency spans languages like JavaScript, TypeScript, SQL, HTML, CSS, PHP, and I'm diving into Go. I've tackled corporate languages like C# and the dotnet ecosystem, and I'm well-versed in modern frameworks like ReactJS and Angular. My hands-on experience includes Symfony, a PHP-based web framework. I'm familiar with deployment tools like Docker and configuring deployments in GitLab, Netlify, and Vercel.
+        </p>
+      </Card>
+      <Card title="Contact Me">
+        <BadassForm 
+          name={name}
+          subject={subject}
+          description={description}
+          setName={setName}
+          setSubject={setSubject}
+          setDescription={setDescription}
+          onSubmit={() => submitMessage(name, subject, description).then(console.log).catch(console.error)}
         />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      </Card>
     </main>
   )
 }
