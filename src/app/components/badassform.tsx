@@ -22,10 +22,10 @@ export default function BadassForm({
         method={"POST"} 
         onSubmit={onSubmit}
       >
-        <input type="text" name="name" id="name" placeholder="Full Name" className="bg-slate-800 hover:bg-slate-700 transition delay-4 rounded outline-none py-2 px-3 w-[250px]" value={name} onChange={(e: any) => setName(e.target.value)}/>
-        <input type="text" name="subject" id="subject" placeholder="Subject" className="bg-slate-800 hover:bg-slate-700 transition delay-4 rounded outline-none py-2 px-3 w-[250px]"  value={subject} onChange={(e: any) => setSubject(e.target.value)}/>
-        <textarea name="description" id="description" rows={7} placeholder="Description" className="bg-slate-800 hover:bg-slate-700 transition delay-4 rounded outline-none py-2 px-3 w-[250px]" value={description} onChange={(e: any) => setDescription(e.target.value)}></textarea>
-        <input type="submit" value="submit" className="border-2 border-slate-600 w-[250px] rounded text-sm uppercase text-slate-500 py-2 hover:cursor-pointer hover:bg-slate-600 hover:border-transparent hover:text-white transition delay-4"/>
+        <input type="text" name="name" id="name" placeholder="Full Name" className="bg-stone-800 hover:bg-stone-700 transition delay-4 rounded outline-none py-2 px-3 w-[250px]" value={name} onChange={(e: any) => setName(e.target.value)}/>
+        <input type="text" name="subject" id="subject" placeholder="Subject" className="bg-stone-800 hover:bg-stone-700 transition delay-4 rounded outline-none py-2 px-3 w-[250px]"  value={subject} onChange={(e: any) => setSubject(e.target.value)}/>
+        <textarea name="description" id="description" rows={7} placeholder="Description" className="bg-stone-800 hover:bg-stone-700 transition delay-4 rounded outline-none py-2 px-3 w-[250px]" value={description} onChange={(e: any) => setDescription(e.target.value)}></textarea>
+        <input type="submit" value="submit" className="border-2 border-stone-600 w-[250px] rounded text-sm uppercase text-stone-500 py-2 hover:cursor-pointer hover:bg-stone-600 hover:border-transparent hover:text-white transition delay-4"/>
       </form>
     )
   }
