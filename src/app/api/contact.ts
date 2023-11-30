@@ -1,5 +1,7 @@
-export default async function POST(request: Request) {
+import { NextRequest, NextResponse } from "next/server";
+
+export default async function POST(request: NextRequest) {
     const { name, subject, description } = await request.json();
     console.log(name, subject, description);
-    return Response.json({ message: 'Thanks for submitting your issue.'});
+    return NextResponse.json({ message: 'Thanks for submitting your issue.'});
 }
